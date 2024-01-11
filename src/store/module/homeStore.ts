@@ -1,10 +1,17 @@
 import { makeAutoObservable } from 'mobx'
-
+import { makePersistable } from 'mobx-persist-store'
+interface transitionStyleType {
+  display: string
+  top: number
+  left: number
+  transform: string
+  transition: string
+}
 class Store {
   name = '张三'
   age = 18
   count = 0
-  transitionStyle = {
+  transitionStyle: transitionStyleType = {
     display: 'none',
     top: 0,
     left: 0,
@@ -13,12 +20,17 @@ class Store {
   }
   constructor () {
     makeAutoObservable(this)
+    makePersistable(this, {
+      name: 'homeStore',
+      properties: ['transitionStyle'],
+      storage: window.localStorage
+    })
   }
 
   add () {
-    this.count ++
+    this.count++
   }
-  setTransitionStyle (newTransitionStyle: any) {
+  setTransitionStyle (newTransitionStyle: transitionStyleType) {
     this.transitionStyle = newTransitionStyle
   }
 }

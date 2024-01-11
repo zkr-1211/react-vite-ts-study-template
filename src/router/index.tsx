@@ -27,6 +27,7 @@ const Home = lazy(async () => {
 })
 const Detail = lazy(() => import('../pages/rule'))
 const Record = lazy(() => import('../pages/record'))
+const Todo = lazy(() => import('../pages/todo'))
 
 export default createHashRouter([
   {
@@ -44,5 +45,9 @@ export default createHashRouter([
   {
     path: '/record',
     element: <Record />
+  }, 
+  {
+    path: '/todo',
+    element: <Todo />
   }
 ])
