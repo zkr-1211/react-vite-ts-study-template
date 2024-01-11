@@ -4,7 +4,7 @@ interface Props {
   totalScore?: number
 }
 
-const Index: React.FC = forwardRef((props: Props, ref: any) => {
+const Index = forwardRef((props: Props, ref: any) => {
   const hello = () => {
     console.log('hello', props)
   }
